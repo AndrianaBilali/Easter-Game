@@ -11,7 +11,8 @@
     
     <div class="egg" onclick="alert('You found a chocolate egg! 🍫')"></div>
     <div class="egg" onclick="document.getElementById('secretBunny').style.display='block'"></div>
-    <div class="egg" onclick="this.style.background='rainbow'"></div>
+    <!-- <div class="egg" onclick="this.style.background='rainbow'"></div> -->
+    <div class="egg" id="megaJumpEgg"></div>
 
     <p class="hidden-basket">🧺 Secret Easter Basket Found! 🧺</p>
     
@@ -25,6 +26,23 @@
             if (keys.join(',').includes('ArrowUp,ArrowUp,ArrowDown,ArrowDown')) {
                 document.body.style.background = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
             }
+        });
+    </script>
+    <script>
+        // GTA Mega Jump cheat: →, →, ←, ←, ↑, ↓, ↑, ↓
+        const megaJumpEgg = document.getElementById('megaJumpEgg');
+        let inputSequence = [];
+        const cheatCode = ['ArrowRight', 'ArrowRight', 'ArrowLeft', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowUp', 'ArrowDown'];
+
+        document.addEventListener('keydown', (e) => {
+        inputSequence.push(e.key);
+        if (inputSequence.length > cheatCode.length) {
+            inputSequence.shift();
+        }
+        if (inputSequence.join() === cheatCode.join()) {
+            megaJumpEgg.style.background = 'black'; // Visual feedback
+            alert('Mega Jump unlocked! 🚀');
+        }
         });
     </script>
 </body>
